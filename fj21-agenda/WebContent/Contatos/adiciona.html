@@ -16,16 +16,13 @@
 		<script>
 			  $( function() {
 			    $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
+			    $( "#divMainMenu" ).load( "../apoio/menu.html" );
 			  } );
   </script>
 	</head>
 	<body style="">
 
-		<div class="ui inverted menu">
-			<a class="active item" href="../index.html">Home</a>
-			<a class="item">Contatos</a>
-			<a class="item">Telefones Públicos</a>
-		</div>
+		<div id="divMainMenu"></div>
 
 		<br/>
 
