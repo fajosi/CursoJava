@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Projeto fj21-agenda</title>
+		
+		  <link rel="stylesheet" type="text/css" href="../CDN/dist/semantic.css">
+		  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+
+		  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+		  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+		  <script src="../CDN/dist/semantic.js"></script>
+		  
+		  
+		<script>
+			  $( function() {
+			    $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
+			  } );
+  </script>
+	</head>
+	<body style="">
+
+		<div class="ui inverted menu">
+			<a class="active item" href="../index.html">Home</a>
+			<a class="item">Contatos</a>
+			<a class="item">Telefones Públicos</a>
+		</div>
+
+		<br/>
+
+		<h1 style="margin: 0px 0px 0px 25px;">Adiciona novo contato</h1>
+		<br/>
+		<form action="../adicionacontato" class="ui form" style="margin: 0px 0px 0px 25px; width:70%;">
+			<div class="field">
+				<label>Nome Completo</label>
+				<input type="text" name="nome" placeholder="nome">
+			</div>
+			<div class="field">
+				<label>E-mail</label>
+				<input type="text" name="email" placeholder="email@provedor.com">
+			</div>
+			<div class="field">
+				<label>Endereço</label>
+				<input type="text" name="endereco" placeholder="endereco">
+			</div>
+			<div class="field">
+				<label>Data de Nascimento</label>
+				<input type="text" id="datepicker" name="datanascimento" placeholder="datanascimento">
+			</div>			
+			<button class="ui button" type="submit">Salvar</button>
+			<a class="ui button" href="main.jsp">Voltar a Lista</a>
+		</form>
+
+</body>
+</html>
