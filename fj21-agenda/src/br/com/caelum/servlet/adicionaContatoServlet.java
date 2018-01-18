@@ -2,17 +2,20 @@ package br.com.caelum.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
+import br.com.caelum.agenda.ConnectionFactory;
 import br.com.caelum.agenda.dao.ContatoDao;
 import br.com.caelum.agenda.modelo.Contato;
 import br.com.caelum.apoio.ResponseHeader;
@@ -26,7 +29,8 @@ public class adicionaContatoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void service(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
+	public void service(ServletRequest req, ServletResponse resp) throws ServletException
+				, IOException {
 		// TODO Auto-generated method stub
 
 		PrintWriter out = resp.getWriter();
@@ -50,14 +54,22 @@ public class adicionaContatoServlet extends HttpServlet {
 			cto.setEmail(email);
 			cto.setEndereco(endereco);
 			
-			ContatoDao dao = new ContatoDao();
-			
-			dao.adiciona(cto);
-			
+			try {
+				ContatoDao dao = new ContatoDao( new ConnectionFactory().getConnection());
+				
+				dao.adiciona(cto);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-			out.println(ResponseHeader.htmlHeader());
-			out.println("<div class='ui positive message'>Contato Cadastrado com Sucesso</div>");
-			out.println("</br></body></html>");
+			
+			
+			
+			req.setAttribute("contato", cto);
+			RequestDispatcher rd = req.getRequestDispatcher("/Contatos/retorno.jsp");
+			rd.forward(req, resp);
+
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

@@ -9,18 +9,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.agenda.ConnectionFactory;
 import br.com.caelum.agenda.modelo.Contato;
 
 public class ContatoDao {
 	private Connection connection;
 
-	public ContatoDao() {
+/*	public ContatoDao() {
 		try {
 			this.connection = new ConnectionFactory().getConnection();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}*/
+	
+	public ContatoDao(Connection connection) {
+		this.connection = connection;
 	}
 
 	public void adiciona(Contato contato) {
@@ -73,11 +76,11 @@ public class ContatoDao {
 		}
 	}
 
-	public void exclui(Contato contato) {
+	public void exclui(int id) {
 		String sql = "delete from contatos where id=?";
 		try {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
-			stmt.setLong(1, contato.getId());
+			stmt.setLong(1, id);
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
