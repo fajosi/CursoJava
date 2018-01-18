@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Tarefa executado com sucesso</h1>
+	<h1>Tarefa adicionada com sucesso</h1>
 </body>
 </html>

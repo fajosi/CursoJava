@@ -2,8 +2,15 @@ package br.com.caelum.tarefas.modelo;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Tarefa {
 	private Long id;
+	
+	@NotEmpty(message="A descrição deve ser preenchida.")
+	@Size(min=5,message="A descrição deve conter no mínimo {min} caracteres.")
 	private String descricao;
 	private boolean finalizado;
 	private Calendar dataFinalizacao;
@@ -27,6 +34,7 @@ public class Tarefa {
 	public boolean isFinalizado() {
 		return finalizado;
 	}
+	
 
 	public void setFinalizado(boolean finalizado) {
 		this.finalizado = finalizado;

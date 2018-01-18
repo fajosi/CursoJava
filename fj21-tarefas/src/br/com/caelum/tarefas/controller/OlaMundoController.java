@@ -12,4 +12,9 @@ public class OlaMundoController {
 		return "ok";
 	}
 
+	@RequestMapping("/index")
+	public String index() {
+		System.out.println("Executando a lógica com Spring MVC");
+		return "index";
+	}
 }
